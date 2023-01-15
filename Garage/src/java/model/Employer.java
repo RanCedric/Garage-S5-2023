@@ -5,6 +5,8 @@
  */
 package model;
 
+import java.sql.Date;
+
 /**
  *
  * @author P15B-164-Arisaina
@@ -14,9 +16,8 @@ public class Employer {
     String employer_name;
     String employer_forname;
     String ref_sexe_id;
-    String employer_date;
+    Date employer_date;
     String employer_numero;
-    String ref_post_id;
 
     public Employer() {
     }
@@ -53,11 +54,11 @@ public class Employer {
         this.ref_sexe_id = ref_sexe_id;
     }
 
-    public String getEmployer_date() {
+    public Date getEmployer_date() {
         return employer_date;
     }
 
-    public void setEmployer_date(String employer_date) {
+    public void setEmployer_date(Date employer_date) {
         this.employer_date = employer_date;
     }
 
@@ -68,14 +69,4 @@ public class Employer {
     public void setEmployer_numero(String employer_numero) {
         this.employer_numero = employer_numero;
     }
-
-    public String getRef_post_id() {
-        return ref_post_id;
-    }
-
-    public void setRef_post_id(String ref_post_id) {
-        this.ref_post_id = ref_post_id;
-    }
-    
-    
 }
