@@ -9,11 +9,30 @@ import DAO.BDD;
 
 /**
  *
- * @author itu
+ * @author P15B-164-Arisaina
  */
-public class Poste extends BDD
-{
-    String poste_id ;
-    String poste_label ;
- 
+public class Poste extends BDD{
+    int poste_id;
+    String poste_label;
+    
+    public Poste(){
+        
+    }
+    
+    // Getters - Setters
+    public int getPoste_id() {
+        return poste_id;
+    }
+
+    public void setPoste_id(int poste_id) {
+        this.poste_id = poste_id;
+    }
+
+    public String getPoste_label() {
+        return poste_label;
+    }
+
+    public void setPoste_label(String poste_label) {
+        this.poste_label = poste_label;
+    }
 }

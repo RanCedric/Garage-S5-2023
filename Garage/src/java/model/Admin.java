@@ -7,20 +7,20 @@ package model;
 
 /**
  *
- * @author Cédric
+ * @author allan
  */
 public class Admin {
-    String admin_id;
-    String admin_name;
-    String admin_mdp;
-
-    public Admin(String admin_id, String admin_name, String admin_mdp) {
-        this.setAdmin_id(admin_id);
-        this.setAdmin_name(admin_name);
-        this.setAdmin_mdp(admin_mdp);
-    }
+     String admin_id  ;
+     String admin_name ;
+     String admin_mdp  ;
 
     public Admin() {
+    }
+
+    public Admin(String admin_id, String admin_name, String admin_mdp) {
+        this.admin_id = admin_id;
+        this.admin_name = admin_name;
+        this.admin_mdp = admin_mdp;
     }
 
     public String getAdmin_id() {
@@ -36,15 +36,7 @@ public class Admin {
     }
 
     public void setAdmin_name(String admin_name) {
-        if(admin_name == "tay"){
-            this.admin_name = null;
-        }
-        else{
-            this.admin_name = admin_name;
-        }
-        
-        
-        
+        this.admin_name = admin_name;
     }
 
     public String getAdmin_mdp() {
@@ -54,6 +46,5 @@ public class Admin {
     public void setAdmin_mdp(String admin_mdp) {
         this.admin_mdp = admin_mdp;
     }
-    
-    
+     
 }

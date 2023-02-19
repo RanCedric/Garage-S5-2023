@@ -1,7 +1,7 @@
 <%-- 
     Document   : accueil
-    Created on : Jan 12, 2023, 3:53:31 PM
-    Author     : tafit
+    Created on : 14 janv. 2023, 15:00:46
+    Author     : allan
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -9,9 +9,12 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Accueil</title>
+        <title>JSP Page</title>
     </head>
     <body>
-        <a href="Control">Insérer employé</a>
+ <div>
+     <h1><% out.println(request.getSession().getAttribute("name")); %> </h1>
+     
+ </div> 
     </body>
 </html>

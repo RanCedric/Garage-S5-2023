@@ -5,19 +5,31 @@
  */
 package model;
 
+import DAO.BDD;
 import java.sql.Date;
 
 /**
  *
  * @author P15B-164-Arisaina
  */
-public class Employer {
+public class Employer extends BDD{
     String employer_id;
     String employer_name;
     String employer_forname;
     String ref_sexe_id;
     Date employer_date;
     String employer_numero;
+    String ref_poste_id;
+
+    public Employer(String employer_id, String employer_name, String employer_forname, String ref_sexe_id, String employer_date, String employer_numero, String ref_poste_id) {
+        this.employer_id = employer_id;
+        this.employer_name = employer_name;
+        this.employer_forname = employer_forname;
+        this.ref_sexe_id = ref_sexe_id;
+        this.employer_date = Date.valueOf(employer_date) ;
+        this.employer_numero = employer_numero;
+        this.ref_poste_id = ref_poste_id;
+    }
 
     public Employer() {
     }
@@ -68,5 +80,13 @@ public class Employer {
 
     public void setEmployer_numero(String employer_numero) {
         this.employer_numero = employer_numero;
+    }
+
+    public String getRef_poste_id() {
+        return ref_poste_id;
+    }
+
+    public void setRef_poste_id(String ref_poste_id) {
+        this.ref_poste_id = ref_poste_id;
     }
 }

@@ -24,7 +24,7 @@ public class BDD {
     String table;
     
     public static String getBdaUrl(){
-        return "jdbc:postgresql://localhost:5432/garage";
+        return "jdbc:postgresql://localhost:5432/garage1";
     }
     
     public static String getBdaUser(){
@@ -32,7 +32,7 @@ public class BDD {
     }
     
     public static String getBdaMdp(){
-        return "admin";
+        return "root";
     }
     
     public void dontSave(String colm){
@@ -164,6 +164,52 @@ public class BDD {
         return data;
     }
     
+    public <T> ArrayList<T> select(Class<T> type) {
+        String className = this.getClass().getSimpleName();
+        String requete = "select * from " + className + " where 1=1";
+        ArrayList<T> data = new ArrayList<T>();
+        try {
+            Field[] fields = type.getDeclaredFields();
+            ResultSet response = response(requete);
+            while (response.next()) {
+                T obj = type.newInstance();
+                for (int i = 0; i < fields.length; i++) {
+                    Field field = fields[i];
+                    field.setAccessible(true);
+                    field.set(obj, response.getObject(i + 1));
+                }
+                data.add(obj);
+            }
+        } catch (Exception e) {
+            ERROR("BDD.select(type)", e);
+        }
+        return data;
+    }
+
+    public <T> ArrayList<T> select(Class<T> type, String condition) {
+        String className = this.getClass().getSimpleName();
+        String requete = "select * from " + className + " where 1=1 and " + condition;
+        ArrayList<T> data = new ArrayList<T>();
+        try {
+            Field[] fields = type.getDeclaredFields();
+            ResultSet response = response(requete);
+            while (response.next()) {
+                T obj = type.newInstance();
+                for (int i = 0; i < fields.length; i++) {
+                    Field field = fields[i];
+                    field.setAccessible(true);
+                    field.set(obj, response.getObject(i + 1));
+                }
+                data.add(obj);
+            }
+        } catch (Exception e) {
+            ERROR("BDD.select(type,condition)", e);
+        }
+        return data;
+    }
+
+    
+    
     /* public ArrayList<Object> selectObject(String condition){
         String requete = "select * from "+this.getClass().getSimpleName()+" where 1=1 and "+condition;
         ArrayList<Object> data = new ArrayList();
@@ -187,6 +233,19 @@ public class BDD {
         return data;
     }
     */
+    public String getOne(String requete){
+        String ret = "0";
+        try{
+            ResultSet reut = response(requete);
+            while(reut.next()){
+                ret = reut.getString(1);
+            }
+        }
+        catch (Exception e){}
+        if(ret == null) ret = "0";
+        return ret;
+    }
+    
     public void ERROR(String errorLocation,Exception e){
         System.out.println("");
         System.out.println("//debut");
@@ -204,6 +263,11 @@ public class BDD {
         catch(ClassNotFoundException | SQLException e){
             ERROR("BDD.open",e);
         }
+    }
+    
+    public Connection getConnection(){
+        open();
+        return this.conn;
     }
     
     public void testConnection (){

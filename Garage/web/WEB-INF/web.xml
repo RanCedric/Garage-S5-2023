@@ -1,20 +1,76 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
     <servlet>
-        <servlet-name>Controller_login</servlet-name>
+        <servlet-name>Controller_Admin</servlet-name>
+        <servlet-class>controller.Controller_Admin</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>FormulaireController</servlet-name>
+        <servlet-class>controller.FormulaireController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EstimationController</servlet-name>
+        <servlet-class>controller.EstimationController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Controller_employer</servlet-name>
+        <servlet-class>controller.Controller_employer</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>blabla</servlet-name>
+        <servlet-class>controller.blabla</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Login</servlet-name>
         <servlet-class>controller.Controller_login</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>Control</servlet-name>
-        <servlet-class>controller.Control</servlet-class>
+        <servlet-name>ControllerLogin</servlet-name>
+        <servlet-class>controller.ControllerLogin</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ListeEmployer</servlet-name>
+        <servlet-class>controller.ListeEmployer</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>HomeController</servlet-name>
+        <servlet-class>controller.HomeController</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>Controller_login</servlet-name>
-        <url-pattern>/Controller_login</url-pattern>
+        <servlet-name>Controller_Admin</servlet-name>
+        <url-pattern>/Controller_Admin</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>Control</servlet-name>
-        <url-pattern>/Control</url-pattern>
+        <servlet-name>Controller_employer</servlet-name>
+        <url-pattern>/Controller_employer</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>blabla</servlet-name>
+        <url-pattern>/blabla</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Login</servlet-name>
+        <url-pattern>/Login</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ControllerLogin</servlet-name>
+        <url-pattern>/ControllerLogin</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>FormulaireController</servlet-name>
+        <url-pattern>/FormulaireController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EstimationController</servlet-name>
+        <url-pattern>/EstimationController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ListeEmployer</servlet-name>
+        <url-pattern>/ListeEmployer</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>HomeController</servlet-name>
+        <url-pattern>/HomeController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
