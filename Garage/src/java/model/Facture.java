@@ -9,6 +9,8 @@ import java.util.ArrayList;
 
 import generalisationArisaina.bdd.connexion.Connexion;
 import generalisationArisaina.bdd.objects.DatabaseObject;
+import java.sql.ResultSet;
+import java.sql.Statement;
 
 public class Facture extends DatabaseObject{
 	String facture_id;
@@ -106,9 +108,57 @@ public class Facture extends DatabaseObject{
 				e.printStackTrace();
 			}
 		}
+                
+                somme = somme - (somme * getRemise());
 		
 		return somme;
 	}
+        
+        public boolean estPremierFacture() throws SQLException {
+            Connection c = Connexion.connectToPostgresDatabase();
+            
+            String query = "SELECT min(facture_id) as id FROM facture WHERE facture_date <= '31-01-" + this.getFacture_date().getYear() + "' AND facture_date >= '01-01-" + this.getFacture_date().getYear() + "'";
+            
+            Statement stat = c.createStatement();
+            
+            ResultSet res = stat.executeQuery(query);
+            
+            boolean isFirst = false;
+            
+            while (res.next()) {
+                if (this.getFacture_id().equals(res.getString("id"))) isFirst = true;
+            }
+            
+            c.close();
+            
+            return isFirst;
+        }
+        
+        public double getRemise() throws Exception {
+            Connection c = Connexion.connectToPostgresDatabase();
+            
+            Client clientInstance = new Client();
+            clientInstance.setSelection("client_id", this.getClient_id());
+            
+            Client client = (Client) clientInstance.getSelectionFromDatabase(c);
+            
+            double remise = 0;
+            
+            if (client.getDate_naissance().getDay() == this.getFacture_date().getDay() && client.getDate_naissance().getMonth() == this.getFacture_date().getMonth()) {
+                remise = 50; // A changer
+            }
+            
+            if (estPremierFacture()) {
+                double tempRemise = 100;
+                
+                remise = tempRemise > remise ? tempRemise : remise;
+            }
+            
+            
+            c.close();
+            
+            return remise;
+        }
         
         public double efaVoaloha(Report report){
             double vola = 0.0;

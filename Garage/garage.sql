@@ -248,3 +248,9 @@ create table report(
 	montant_report DECIMAL(18,5),
 	date_report(18,5)
 );
+
+create table remises(
+	remise_id serial primary key,
+	remise_nom VARCHAR(255),
+	remise_montant DECIMAL(18,5)
+);
