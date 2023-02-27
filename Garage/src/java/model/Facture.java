@@ -145,11 +145,11 @@ public class Facture extends DatabaseObject{
             double remise = 0;
             
             if (client.getDate_naissance().getDay() == this.getFacture_date().getDay() && client.getDate_naissance().getMonth() == this.getFacture_date().getMonth()) {
-                remise = 50; // A changer
+                remise = Remises.getRemiseof("anniversaire").getRemise_montant(); // A changer
             }
             
             if (estPremierFacture()) {
-                double tempRemise = 100;
+                double tempRemise = Remises.getRemiseof("premier").getRemise_montant();
                 
                 remise = tempRemise > remise ? tempRemise : remise;
             }
